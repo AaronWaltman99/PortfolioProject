@@ -105,13 +105,13 @@ ORDER BY Total_Profit DESC
 
 --Calculating Total Cost, Total Revenue, Total Profit, and Profit Margin Per Company and City
 SELECT Company, City,
-	ROUND(SUM(CAST(Price_Charged AS FLOAT)),2) AS Total_Cost,
-	ROUND(SUM(CAST(Cost_of_Trip AS FLOAT)),2) AS Total_Revenue,
+	ROUND(SUM(CAST(Price_Charged AS FLOAT)),2) AS Total_Revenue,
+	ROUND(SUM(CAST(Cost_of_Trip AS FLOAT)),2) AS Total_Cost,
 	(ROUND(SUM(CAST(Price_Charged AS FLOAT)),2))-(ROUND(SUM(CAST(Cost_of_Trip AS FLOAT)),2)) AS Total_Profit,
-	ROUND(((SUM(CAST(Price_Charged AS FLOAT)))-(SUM(CAST(Cost_of_Trip AS FLOAT))))/(SUM(CAST(Cost_of_Trip AS FLOAT)))*100,2) AS Profit_Margin
+	 ROUND(((SUM(CAST(Price_Charged AS FLOAT))) - (SUM(CAST(Cost_of_Trip AS FLOAT))))/(SUM(CAST(Price_Charged AS FLOAT)))*100,2) AS Profit_Margin
 FROM [Portfolio Project].[dbo].[Taxi_Data]
 GROUP BY Company, City
-ORDER BY Company, Profit_Margin DESC
+ORDER BY Company DESC
 
 
 --Taxi Rides Each Day 2016-2018
